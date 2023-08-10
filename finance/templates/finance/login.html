@@ -1,0 +1,15 @@
+{% extends 'finance/layout.html'%}
+
+{% block body %}
+<div class="flex flex-col gap-2 items-center justify-center content-center">
+    <h1 class="text-3xl text-white mt-40">Welcome back!</h1>
+    <form action="{% url 'finance:login' %}" method="post" class="sm:w-3/12 w-10/12">
+        {% csrf_token %}
+        <input type="text" name="username" placeholder="Username" class="w-full bg-slate-300 text-slate-900 font-bold block my-3 px-2 py-1 rounded-lg">
+        <input type="password" name="password" placeholder="Password" class="w-full bg-slate-300 text-slate-900 font-bold block my-3 px-2 py-1 rounded-lg">
+        <input type="submit" value="Login" class="w-full bg-teal-500 p-2 transition-all hover:bg-teal-400 text-slate-800 font-bold rounded-lg">
+    </form>
+
+    <p class="text-md text-white mt-40">No account yet? <a class="text-teal-500 hover:text-teal-400 " href="{% url 'finance:register' %}">Register here</a></p>
+</div>
+{% endblock %}

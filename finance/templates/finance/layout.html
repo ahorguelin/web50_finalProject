@@ -1,0 +1,87 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://kit.fontawesome.com/992ee82fe6.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+        theme: {
+            extend: {
+            colors: {
+                clifford: '#da373d',
+            }
+            }
+        }
+        }
+    </script>
+    <script src="{% static 'finance/script.js' %}"></script>
+    <link href="{% static 'finance/style.css' %}" rel="stylesheet"></link>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finance</title>
+</head>
+<body>
+    <div class="fixed sm:w-fit sm:h-screen bg-slate-600 w-screen bottom-0 h-auto mt-auto z-10">
+        <div class="flex flex-row justify-between sm:p-0 p-3 sm:flex-col">
+
+            {% if user.is_authenticated %}
+            <div id="home" class="sm:m-3 p-3 inline-block relative rounded-lg sm:shadow-md sm:transition-all sm:transform sm:hover:scale-105 group">
+                <i class="fa-solid fa-house fa-2xl" style="color: #03050a;"></i>
+                <span class="absolute w-auto px-2 py-0.5 mx-8 left-12 rounded-lg bg-black font-bold text-white scale-0 transition-all sm:group-hover:scale-100">
+                    Home
+                </span>
+            </div>
+
+            
+            <div id="transaction" class="sm:m-3 p-3 inline-block relative sm:border-solid rounded-lg sm:shadow-md sm:transition-all sm:transform sm:hover:scale-105 group">
+                <i class="fa-solid fa-list-check fa-2xl" style="color: #000000; "></i>
+                <span class="absolute w-auto px-2 py-0.5 mx-8 left-12 rounded-lg bg-black font-bold text-white scale-0 transition-all sm:group-hover:scale-100">
+                    Transactions
+                </span>
+            </div>
+            
+            <a href="{% url 'finance:logout' %}">
+                <div class="sm:m-3 p-3 inline-block relative sm:border-solid rounded-lg sm:shadow-md sm:transition-all sm:transform sm:hover:scale-105 group">
+                    <i class="fa-solid fa-right-from-bracket fa-2xl" style="color: #000000;"></i>
+                    <span class="absolute w-auto px-2 py-0.5 mx-8 left-12 rounded-lg bg-black font-bold text-white scale-0 transition-all sm:group-hover:scale-100">
+                        Logout
+                    </span>
+                </div>
+            </a>
+            {% else %}
+
+            <a href="{% url 'finance:login' %}">
+                <div class="sm:m-3 p-3 inline-block relative sm:border-solid rounded-lg sm:shadow-md sm:transition-all sm:transform sm:hover:scale-105 group">
+                    <i class="fa-solid fa-user fa-2xl" style="color: #000000;"></i>
+                    <span class="absolute w-auto px-2 py-0.5 mx-8 left-12 rounded-lg bg-black font-bold text-white scale-0 transition-all sm:group-hover:scale-100">
+                        Login
+                    </span>
+                </div>
+            </a>
+            <a href="{% url 'finance:register' %}">
+                <div class="sm:m-3 p-3 inline-block relative sm:border-solid rounded-lg sm:shadow-md sm:transition-all sm:transform sm:hover:scale-105 group">
+                    <i class="fa-solid fa-user-plus fa-2xl" style="color: #000000;"></i>
+                    <span class="absolute w-auto px-2 py-0.5 mx-8 left-12 rounded-lg bg-black font-bold text-white scale-0 transition-all sm:group-hover:scale-100">
+                        Register
+                    </span>
+                </div>
+            </a>
+            
+            {% endif %}
+        </div>
+    </div>
+
+    {% if message %}
+    <div id="toast" class="rounded-lg bg-slate-200 text-slate-800 w-fit px-8 py-4 fixed top-10 inset-x-0 mx-auto font-bold">
+        {{message}}
+    </div>
+    {% endif %}
+
+    {% block title %}
+    {% endblock %}
+
+    {% block body %}
+    {% endblock %}
+</body>
+</html>

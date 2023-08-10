@@ -1,0 +1,45 @@
+body{
+    background: #1e293b;
+}
+
+.form-container{
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out;
+}
+
+.glass{
+    background:rgba(92, 92, 92, 0.301);
+    backdrop-filter: blur(10px);
+}
+
+input[type=number]{
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+.amount::after{
+    content: ' €';
+}
+
+.negative::before{
+    content: '- ';
+}
+
+
+/* inspiration from https://stackoverflow.com/questions/62942698/how-to-put-gradient-opacity-in-my-gradient */
+.gradient{
+    background: linear-gradient(90deg, rgba(255,255,255, 0) 0%, rgba(255,255,255,0.6) 100%);
+}
+
+#toast{
+    animation: fade-out 2s;
+    animation-fill-mode: forwards;
+    pointer-events: none;
+}
+
+@keyframes fade-out {
+    0% {opacity: 1;}
+    80% {opacity: 1;}
+    100% {opacity: 0.0;}
+}

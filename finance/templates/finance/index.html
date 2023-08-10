@@ -1,0 +1,118 @@
+{% extends "finance/layout.html" %}
+
+
+
+{% block body %}
+<h1 class="text-3xl text-white my-3 text-center">Web50 Finance</h1>
+
+<div class="flex flex-row gap-3 justify-center">
+
+    <select id="filter-year"  data-type="filter" class="block p-2 rounded-lg border-slate-500 focus:outline-none  bg-slate-200 text-slate-800">
+        {% for entry in transaction_year %}
+        <option value="{{ entry.year }}">{{ entry.year }}</option>
+        {% endfor %}
+        <option value="all">All time</option>
+    </select>
+
+    <select id="filter-month" data-type="filter"  class="block p-2 rounded-lg border-slate-500 focus:outline-none  bg-slate-200 text-slate-800">
+        <option value="all">All year</option>
+        <option value="01">January</option>
+        <option value="02">Frebruary</option>
+        <option value="03">March</option>
+        <option value="04">April</option>
+        <option value="05">May</option>
+        <option value="06">June</option>
+        <option value="07">July</option>
+        <option value="08">August</option>
+        <option value="09">September</option>
+        <option value="10">October</option>
+        <option value="11">November</option>
+        <option value="12">December</option>
+    </select>
+
+</div>
+
+<div data-type="page" data-active="" id="home-page">
+
+    <div class="flex flex-col sm:gap-2 items-center sm:flex-row sm:justify-around sm:items-start my-3 pb-[72px]">
+
+        <div class="flex flex-col gap-2">
+            <button id="new-transaction" data-type="expand" class="rounded-lg bg-teal-500 p-2 transition-all hover:bg-teal-400 text-slate-800 font-bold">
+                New transaction
+            </button>
+
+            <div id="new-transaction-form" class="form-container">
+
+                <div class="flex flex-col gap-3">
+                    <select id="transaction-type"  class="block p-2 rounded-lg border-slate-500 focus:outline-none  bg-slate-200 text-slate-800">
+                        <option value="D">Deposit</option>
+                        <option value="W">Withdrawal</option>
+                    </select>
+
+                    <select id="transaction-category" class="block p-2 rounded-lg border-slate-500 focus:outline-none  bg-slate-200 text-slate-800">
+                        {% for cat in category %}
+                        <option value="{{ cat.id }}">{{ cat.name }}</option>
+                        {% endfor %}
+                    </select>
+
+                    <input type="number" step="0.01" min="0" inputmode="numeric" pattern="^[1-9]\d*$" id="transaction-amount" autocomplete="new-password" placeholder="Amount" class="block p-2 rounded-lg border-slate-500 focus:outline-none focus:ring-2 focus:ring-teal-400 bg-slate-200 text-slate-800">
+
+                    <div class="flex flex-row justify-around items-center my-3">
+                        <label for="color" class="text-white">Date</label>
+                        <input id="transaction-date" type="date" name="transaction-date" class="p-1 rounded-lg bg-slate-200 w-9/12">
+                    </div>
+
+
+                    <button id="create-new-transaction" class="rounded-lg bg-teal-500 p-2 transition-all hover:bg-teal-400 text-slate-800 font-bold">
+                        Add
+                    </button>
+
+                </div>
+
+            </div>
+
+            <button id="new-category" data-type="expand" class="rounded-lg bg-teal-500 p-2 transition-all hover:bg-teal-400 text-slate-800 font-bold">
+                New category
+            </button>
+    
+            <div id="new-category-form" class="form-container">
+                <div class="flex flex-col gap-3">
+    
+                    <input type="text" id="category-name" autocomplete="new-password" placeholder="Category Name" class="block p-2 rounded-lg border-slate-500 focus:outline-none focus:ring-2 focus:ring-teal-400 bg-slate-200 text-slate-800">
+    
+                    <div class="flex flex-row justify-between items-center my-3">
+                        <label for="color" class="text-white">Color</label>
+                        <input id="category-color" type="color" name="color" class="p-1 rounded-lg bg-slate-200 w-6/12">
+                    </div>
+    
+                    <button id="create-new-category" disabled="true" class="rounded-lg bg-teal-500 p-2 transition-all hover:bg-teal-400 text-slate-800 font-bold">
+                        Please input a name
+                    </button>
+                </div>            
+            </div>
+
+        </div>
+
+
+            <div id="home-container" class="flex flex-col gap-3 justify-between items-center my-3 sm:my-0">
+
+            </div>
+    
+    </div>
+</div>
+
+<div data-type="page" data-active="" id="transaction-page">
+
+    
+    
+    
+    <div class="flex flex-col gap-2 items-center pb-[72px]">
+        
+        <div id="transaction-list" class="flex flex-col gap-3 justify-between items-center my-3">
+
+        </div>
+
+    </div>
+
+</div>
+{% endblock %}
