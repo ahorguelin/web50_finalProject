@@ -2,6 +2,8 @@
 
 ## Distinctiveness and Complexity
 
+[Project brief](https://cs50.harvard.edu/web/2020/projects/final/capstone/)
+
 The goal of this app is to track personal finance movements within saving accounts. This app aims to give users more visibility than what is typically shown on basic banking dashboards. For instance, when users deposit $100 into their savings account, they might want to allocate $50 for an upcoming car expense, $20 for buying gifts, and the rest as a security fund. The goal is to be able to create any category of savings users might desire and deposit money into it accordingly.
 
 The scope of this project is different from previous web50 projects as it focuses on managing one's personal finance. The focus was placed on the user interface and usability in mobile mode. This project also goes further in the models (and by extension, serializers) by adding custom methods that allow for better processing of user data.
